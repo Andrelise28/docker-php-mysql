@@ -1,0 +1,21 @@
+php:
+  image: php:7.4-apache
+  container_name: php-7.4
+  ports:
+    - "80:80"
+    - "443:443"
+  volumes:
+    - /home/andrelise/Documentos/php-docker:/var/www/html 
+  links:
+    - db
+
+db: 
+  image: mysql:latest
+  container_name: mysql-php
+  ports:
+    - "33306:3306"
+  volumes:
+    - /var/lib/mysql
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
+
